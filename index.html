@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            let lastClicked = null;
+            const element = document.createElement("p");
+            const element1 = document.createElement("p");
+            function Correct(id)
+            {
+                if (lastClicked !== null)
+                {
+                    lastClicked.style="background-color:#d9edff;";
+                }
+                const place = document.getElementById("QS1");
+                btn = document.getElementById(id);
+                element.textContent= "Correct!";
+                place.appendChild(element);
+                btn.style="background-color:#00ff00;";
+                lastClicked = btn;
+            };
+            function NotCorrect(id)
+            {
+                if (lastClicked !== null)
+                {
+                    lastClicked.style="background-color:#d9edff;";
+                }
+                const place = document.getElementById("QS1");
+                btn = document.getElementById(id);
+                btn.style="background-color:#ff0000;";
+                element.textContent= "Incorrect!";
+                place.appendChild(element);
+                lastClicked = btn;
+            };
+            function getValue()
+            {
+                const answer = document.getElementById("answer2").value;
+                if (answer.toLowerCase().trim() === "cs50")
+                {
+                    const block = document.getElementById("answer2");
+                    block.style="background-color: #00ff00;";
+                    const place = document.getElementById("QS2");
+                    element1.textContent="Correct!";
+                    place.appendChild(element1);
+                }
+                else
+                {
+                    const block = document.getElementById("answer2");
+                    block.style="background-color: #ff0000;";
+                    const place = document.getElementById("QS2");
+                    element1.textContent="Incorrect!";
+                    place.appendChild(element1);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                    <h3 id="QS1">What is the most popular programming language?</h3>
+                    <button id="btn1" Onclick="Correct(this.id);">  Python  </button>
+                    <button id="btn2" Onclick="NotCorrect(this.id);">   C  </button>
+                    <button id="btn3" Onclick="NotCorrect(this.id);">   C++ </button>
+                    <button id="btn4" Onclick="NotCorrect(this.id);">   JavaScript  </button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3 id="QS2">What's the best computer science course?</h3>
+                <input type="text" id="answer2">
+                <input type="submit" value="Check Asnwer" Onclick="getValue();">
+            </div>
+        </div>
+    </body>
+</html>
